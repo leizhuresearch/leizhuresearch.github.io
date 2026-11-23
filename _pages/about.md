@@ -2,19 +2,18 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Postdoctoral Research Associate, Department of Materials, University of Oxford
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: # add a photo to assets/img/ and put its file name here
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Department of Materials</p>
+    <p>University of Oxford</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # includes social icons at the bottom of the page
 
 announcements:
   enabled: false # includes a list of news items
@@ -27,8 +26,15 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a Postdoctoral Research Associate in the Department of Materials at the University of Oxford. I use atomistic simulation and machine learning to study the mechanical, interfacial and defect properties of materials, with a current focus on halide perovskites for solar cells.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My research interests are:
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+- **Mechanics of hybrid materials:** nonlinear mechanical response, fracture and lattice anharmonicity in inorganic–organic hybrid materials.
+- **Machine learning for materials:** accurate, transferable machine-learned interatomic potentials and active-learning strategies for materials simulation.
+- **Multiscale modelling:** combining quantum-mechanical, QM/MM and machine-learning methods to predict materials properties across length and time scales.
+- **Defects, interfaces and degradation:** atomic-scale mechanisms that govern performance and long-term stability in semiconductors and energy materials, in close collaboration with experimental groups.
+
+I received my PhD in Chemistry from University College London in 2022, with a thesis on computational studies of point defects in aluminium nitride. Before that, I studied physics at UCL, semiconductor photonics at the University of Sheffield, and electronic engineering at Huaqiao University.
+
+A full list of papers is on the [publications page]({{ '/publications/' | relative_url }}), and my academic background is on the [CV page]({{ '/cv/' | relative_url }}).

@@ -1,40 +1,58 @@
 ---
-layout: about
-title: about
+layout: default
+title: home
 permalink: /
-subtitle: Postdoctoral Research Associate, Department of Materials, University of Oxford
-
-profile:
-  align: right
-  image: # add a photo to assets/img/ and put its file name here
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Department of Materials</p>
-    <p>University of Oxford</p>
-
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
-
-announcements:
-  enabled: false # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: false
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+photo: # file name of your photo in assets/img/, for example lei_zhu.jpg
 ---
 
-I am a Postdoctoral Research Associate in the Department of Materials at the University of Oxford. I use atomistic simulation and machine learning to study the mechanical, interfacial and defect properties of materials, with a current focus on halide perovskites for solar cells.
+<div class="home">
+  <aside class="home-sidebar">
+    {% if page.photo %}
+      <img class="home-photo" src="{{ page.photo | prepend: '/assets/img/' | relative_url }}" alt="Photo of {{ site.first_name }} {{ site.last_name }}">
+    {% else %}
+      <div class="home-photo home-photo-placeholder" aria-hidden="true"><i class="fa-solid fa-user"></i></div>
+    {% endif %}
+    <h1 class="home-name">Dr. {{ site.first_name }} {{ site.last_name }}</h1>
+    <p class="home-title">Postdoctoral Research Associate</p>
+    <p class="home-affiliation">
+      Department of Materials<br>
+      University of Oxford, UK
+    </p>
+    <div class="home-links">{% social_links %}</div>
+  </aside>
 
-My research interests are:
+  <div class="home-main">
+    <section class="home-section" markdown="1">
 
-- **Mechanics of hybrid materials:** nonlinear mechanical response, fracture and lattice anharmonicity in inorganic–organic hybrid materials.
-- **Machine learning for materials:** accurate, transferable machine-learned interatomic potentials and active-learning strategies for materials simulation.
-- **Multiscale modelling:** combining quantum-mechanical, QM/MM and machine-learning methods to predict materials properties across length and time scales.
-- **Defects, interfaces and degradation:** atomic-scale mechanisms that govern performance and long-term stability in semiconductors and energy materials, in close collaboration with experimental groups.
+### About Me
 
-I received my PhD in Chemistry from University College London in 2022, with a thesis on computational studies of point defects in aluminium nitride. Before that, I studied physics at UCL, semiconductor photonics at the University of Sheffield, and electronic engineering at Huaqiao University.
+I am a Postdoctoral Research Associate in the Department of Materials at the University of Oxford.
 
-A full list of papers is on the [publications page]({{ '/publications/' | relative_url }}), and my academic background is on the [CV page]({{ '/cv/' | relative_url }}).
+</section>
+
+    <div class="home-columns">
+      <section class="home-section" markdown="1">
+
+### Research Interests
+
+- Defects, interfaces and degradation in semiconductors and energy materials
+- Mechanics of hybrid materials: nonlinear response, fracture and lattice anharmonicity
+- Efficient learning strategies for developing machine-learning interatomic potentials
+- Multiscale modelling with quantum-mechanical, QM/MM and machine-learning methods
+
+</section>
+
+      <section class="home-section" markdown="1">
+
+### Education
+
+- **PhD in Chemistry**<br>University College London, UK
+- **MSc in Physics**<br>University College London, UK
+- **MSc in Semiconductor Photonics and Engineering**<br>University of Sheffield, UK
+- **BEng in Electronic Engineering**<br>Huaqiao University, China
+
+</section>
+    </div>
+
+  </div>
+</div>

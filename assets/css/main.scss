@@ -1,0 +1,265 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+/* Built-in Sass modules you’ll likely use across partials */
+@use "sass:math";
+@use "sass:string";
+
+/* Configure your design tokens BEFORE loading any of your partials.
+   Make sure `_sass/_variables.scss` declares `$max-content-width: 72rem !default;` */
+@use "variables" with (
+  $max-content-width: {{site.max_width | default: "930px"}}
+);
+
+/* Your project partials — convert these files to `@use "variables";`
+   (or `@use "variables" as *;`) inside each file and qualify variables if needed. */
+@use "themes";
+@use "layout";
+
+// Core styles organized by usage
+@use "typography";
+@use "navbar";
+@use "footer";
+@use "blog";
+@use "publications";
+@use "components";
+@use "utilities";
+
+// Other specialized styles
+@use "tabs";
+@use "teachings";
+@use "typograms";
+
+// ---- Site overrides ----
+
+// Typography: Geist (loaded from Google Fonts in _config.yml) for a clean, modern look.
+body {
+  font-family:
+    "Geist",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.02em;
+}
+
+code,
+pre,
+kbd {
+  font-family: "Geist Mono", ui-monospace, monospace;
+}
+
+// Show the full name "Lei Zhu" in bold: About page title, menu brand on other pages,
+// and the highlighted author in publication lists.
+.post-title:has(> .font-weight-bold),
+.navbar-brand.title {
+  font-weight: bold;
+}
+
+.publications .author em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+$home-photo-size: 220px;
+$home-photo-gap: 1rem;
+
+// About page: left sidebar (a quarter of the width) and main column; stacks on small screens.
+.home {
+  display: grid;
+  grid-template-columns: auto 1fr; // sidebar is as wide as its longest line
+  gap: 3rem;
+  align-items: start;
+}
+
+.home-sidebar {
+  text-align: center;
+
+  .home-photo {
+    display: block;
+    width: 100%;
+    max-width: $home-photo-size;
+    aspect-ratio: 1;
+    margin: 0 auto $home-photo-gap;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .home-photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--global-divider-color);
+    color: var(--global-text-color-light);
+    font-size: 4rem;
+  }
+
+  .home-name {
+    font-size: 2.25rem;
+    white-space: nowrap;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+
+  .home-title {
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .home-affiliation {
+    color: var(--global-text-color-light);
+  }
+
+  .home-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+
+    a {
+      color: var(--global-text-color);
+
+      &:hover {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// One-line introduction at the top of the right column, slightly larger than body text.
+.home-intro p {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: bold;
+  color: var(--global-text-color-light);
+}
+
+// Start the right column so the introduction line sits near the bottom of the photo.
+.home-main {
+  padding-top: calc(#{$home-photo-size} * 0.9 - 1rem);
+}
+
+.home-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.home-section {
+  margin-bottom: 1.5rem;
+
+  h3 {
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  // Bullets start exactly at the heading's left edge; wrapped lines align with the text.
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .home,
+  .home-columns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .home-main {
+    padding-top: 0;
+  }
+}
+
+// Google Scholar link at the top of the Publications page.
+.scholar-link a {
+  color: var(--global-text-color);
+
+  &:hover {
+    color: var(--global-theme-color);
+    text-decoration: none;
+  }
+}
+
+// Section headings on the Publications and Conferences pages.
+.publications h2.pub-section,
+.conferences h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// Conferences page: grey venue line and bullets aligned with the section headings.
+.conferences {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.9rem;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+    }
+
+    em {
+      color: var(--global-text-color-light);
+    }
+  }
+}
+
+// White background everywhere: footer bar (theme default is near-black) and an opaque top menu.
+:root {
+  --global-bg-color: #ffffff;
+  --global-footer-bg-color: #ffffff;
+  --global-footer-text-color: var(--global-text-color-light);
+  --global-footer-link-color: var(--global-text-color);
+}
+
+// No footer: the theme's footer only shows the copyright line, which this site leaves out.
+footer.fixed-bottom {
+  display: none;
+}
+
+.navbar {
+  opacity: 1;
+}

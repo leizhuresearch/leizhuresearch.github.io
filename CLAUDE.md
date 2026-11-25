@@ -12,8 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 bundle install                                # ruby gems
-bundle exec jekyll serve                      # dev server → http://localhost:4000/al-folio/  (NOTE baseurl)
-bundle exec jekyll build --baseurl /al-folio  # production-style build to _site/
+bundle exec jekyll serve                      # dev server → http://localhost:4000/  (blank baseurl; user site)
+bundle exec jekyll build                      # production-style build to _site/
 bash test/integration_distill.sh              # run ONE integration test (any of the seven in test/)
 npm run test:visual:update                    # refresh playwright snapshots after intentional UI change
 bundle exec al-folio upgrade apply --safe     # deterministic codemods (font-weight-* → font-*, remote→local URLs)
@@ -29,7 +29,7 @@ bundle exec al-folio upgrade overrides diff <path>    # then `overrides accept <
 
 ## Docker serving model (v1-specific)
 
-`docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify with the `/al-folio` baseurl: `curl -fsS http://127.0.0.1:8080/al-folio/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
+`docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify with `curl -fsS http://127.0.0.1:8080/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
 
 ## CI gates and the style contract
 
@@ -46,6 +46,18 @@ Other gates:
 ## Gem version pins
 
 `Gemfile` pins every `al-*` gem to an exact released version in `group :al_folio_plugins`, and `_config.yml` lists the same gems under `plugins:`. Read the current pins from the `Gemfile` rather than trusting any version quoted in prose — including here. To test a gem fix against this site, repoint the `Gemfile` at a sibling checkout (`path:`, `git:`, or `branch:`) and `bundle install`; see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md#working-on-a-gem-alongside-the-starter). Revert the pin before committing.
+
+## This site
+
+This repo is Lei Zhu's personal site, created from the al-folio template. Where the template docs describe the upstream demo (baseurl `/al-folio`, demo content, integration and visual tests), this section wins.
+
+- **Address:** GitHub user site `https://leizhuresearch.github.io/`, repo `leizhuresearch/leizhuresearch.github.io`, blank `baseurl`.
+- **Pages:** only About (`_pages/about.md`), Publications (rendered from `_bibliography/papers.bib`) and CV. The blog, projects, news, teaching and other demo sections were removed.
+- **CV:** written by hand in Markdown in `_pages/cv.md`. There is no `_data/cv.yml` and no RenderCV workflow, and no downloadable CV PDF.
+- **Contact links:** `_data/socials.yml` holds the approved email, ORCID, Google Scholar and LinkedIn links. Add nothing else there without approval.
+- **Deploying:** `deploy.yml` builds on pushes to `main` and force-pushes the result to `gh-pages`; GitHub Pages publishes from `gh-pages`. A merge to `main` therefore goes live within a few minutes.
+- **Template tests:** `unit-tests.yml` and `visual-regression.yml` only run on the upstream repo, so the demo content they test is not needed here.
+- **Local setup:** Ruby comes from the system packages (`ruby-full`) and gems install into `vendor/bundle` (`bundle config set --local path vendor/bundle`). ImageMagick is not installed locally, so `convert: not found` messages during a local build are expected.
 
 ## My publishing rules
 

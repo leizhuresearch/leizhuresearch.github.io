@@ -523,7 +523,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,300..700;1,300..700&family=Geist+Mono:wght@400;500&display=swap"
   highlightjs:
     integrity:
       css:

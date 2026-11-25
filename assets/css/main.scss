@@ -139,9 +139,17 @@ $home-photo-gap: 1rem;
   }
 }
 
-// Start the right column so the "About Me" heading sits near the middle of the photo.
+// One-line introduction at the top of the right column, slightly larger than body text.
+.home-intro p {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: bold;
+  color: var(--global-text-color-light);
+}
+
+// Start the right column so the introduction line sits near the bottom of the photo.
 .home-main {
-  padding-top: calc(#{$home-photo-size} / 2 - 1rem);
+  padding-top: calc(#{$home-photo-size} * 0.9 - 1rem);
 }
 
 .home-columns {

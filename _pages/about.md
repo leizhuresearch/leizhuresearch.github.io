@@ -22,11 +22,9 @@ photo: # file name of your photo in assets/img/, for example lei_zhu.jpg
   </aside>
 
   <div class="home-main">
-    <section class="home-section" markdown="1">
+    <section class="home-section home-intro" markdown="1">
 
-### About Me
-
-I am a Postdoctoral Research Associate in the Department of Materials at the University of Oxford.
+A materials modeller working at the interface of experiment and theory.
 
 </section>
 

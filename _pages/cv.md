@@ -4,21 +4,11 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
+published: false # hidden for now; set to true (or delete this line) to bring the CV page back
 ---
 
 **Dr. Lei Zhu**<br>
-Postdoctoral Research Associate, Department of Materials, University of Oxford, UK<br>
-[lei.zhu@materials.ox.ac.uk](mailto:lei.zhu@materials.ox.ac.uk) ·
-[ORCID](https://orcid.org/0000-0002-6610-3542) ·
-[Google Scholar](https://scholar.google.com/citations?user=Db4dHQIAAAAJ) ·
-[LinkedIn](https://www.linkedin.com/in/lei-zhu-6b6611b4/)
-
-## Research interests
-
-- **Mechanics of hybrid materials:** nonlinear mechanical response, fracture and lattice anharmonicity in inorganic–organic hybrid materials.
-- **Machine learning for materials:** accurate, transferable machine-learned interatomic potentials and active-learning strategies for materials simulation.
-- **Multiscale modelling:** combining quantum-mechanical, QM/MM and machine-learning methods to predict materials properties across length and time scales.
-- **Defects, interfaces and degradation:** atomic-scale mechanisms that govern performance and long-term stability in semiconductors and energy materials, in close collaboration with experiment.
+Postdoctoral Research Associate, Department of Materials, University of Oxford, UK
 
 ## Appointments and degrees
 
@@ -45,10 +35,6 @@ Multiscale modelling of intrinsic point defects in the wide-band-gap nitride AlN
 - Applied hybrid QM/MM embedded-cluster methods (ChemShell) to establish the donor and acceptor character of intrinsic defects in AlN.
 - Calculated optical absorption, emission and carrier-capture behaviour of intrinsic defects, assigning specific defects to measured absorption and luminescence bands.
 
-## Publications
-
-See the [publications page]({{ '/publications/' | relative_url }}).
-
 ## Presentations
 
 **Oral**
@@ -67,25 +53,6 @@ See the [publications page]({{ '/publications/' | relative_url }}).
 **Departmental**
 
 - Multi-scale Atomistic Simulations on Bulk and Defect Properties. _Postdoctoral Research Symposium_, Department of Materials, University of Oxford, UK, 2025.
-
-## Computing allocations
-
-**Competitive allocations**
-
-| Years       | System                     | Call                      | Allocation             |
-| ----------- | -------------------------- | ------------------------- | ---------------------- |
-| 2026 – 2027 | JUPITER (EuroHPC), Germany | EuroHPC JU Regular Access | 288,000 GPU hours      |
-| 2026 – 2027 | JUPITER (EuroHPC), Germany | EuroHPC JU AI for Science | 82,611 GPU hours       |
-| 2026 – 2027 | LUMI-C (EuroHPC), Finland  | EuroHPC JU Regular Access | 108,000 CPU node hours |
-| 2026        | AIRR Isambard-AI, UK       | AIRR Gateway route        | 40,000 GPU hours       |
-
-**Access through the UK Materials Chemistry Consortium:** ARCHER (2017 – 2021), ARCHER2 (2021 – 2026), Cirrus and Mary Coombs (2026 – present).
-
-## Research skills
-
-- **Methods:** density functional theory (including hybrid functionals), ab initio and classical molecular dynamics, hybrid QM/MM embedded-cluster modelling, interatomic-potential fitting, defect thermodynamics and migration (transition-state searches, nudged elastic band methods), and machine-learned interatomic potentials (training, committee-based uncertainty quantification, active learning).
-- **Software:** VASP, CP2K, ChemShell, LAMMPS, MACE, GULP, ASE, Phonopy.
-- **Programming and HPC:** Python, Bash, Git; large-scale GPU and CPU computing on national and EuroHPC systems (Slurm).
 
 ## Teaching and mentoring
 

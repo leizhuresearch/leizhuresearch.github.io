@@ -200,8 +200,9 @@ $home-photo-gap: 1rem;
   }
 }
 
-// Section headings on the Publications page (first-author, computational, all papers).
-.publications h2.pub-section {
+// Section headings on the Publications and Conferences pages.
+.publications h2.pub-section,
+.conferences h2 {
   font-size: 1.6rem;
   font-weight: 600;
   margin-top: 3rem;
@@ -214,6 +215,30 @@ $home-photo-gap: 1rem;
   }
 }
 
+// Conferences page: grey venue line and bullets aligned with the section headings.
+.conferences {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.9rem;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+    }
+
+    em {
+      color: var(--global-text-color-light);
+    }
+  }
+}
+
 // White background everywhere: footer bar (theme default is near-black) and an opaque top menu.
 :root {
   --global-bg-color: #ffffff;
@@ -222,8 +247,9 @@ $home-photo-gap: 1rem;
   --global-footer-link-color: var(--global-text-color);
 }
 
+// No footer: the theme's footer only shows the copyright line, which this site leaves out.
 footer.fixed-bottom {
-  border-top: 1px solid var(--global-divider-color);
+  display: none;
 }
 
 .navbar {
